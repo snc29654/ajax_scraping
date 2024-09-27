@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タイトル</title>
+</head>
+<body>
+    <button type="button" >送信</button>
+    <input type="text" id="text1" value="https://news.yahoo.co.jp/categories/sports" />
+    <p id="inbox"></p>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
+
+<script>
+
+$(function(){
+
+    $("button").click(function(){
+        let str1 = document.getElementById("text1").value;
+        $.ajax({
+
+            url:'./cgi-bin/sample.py',
+            type:'POST',
+            data:{sent:str1}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    });
+});
+
+
+</script>
+
+</body>
+</html>
+
