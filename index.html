@@ -18,6 +18,9 @@
         <option value="https://news.yahoo.co.jp/categories/it">yahoo　IT</option>
         <option value="https://sports.yahoo.co.jp/list/news/mlb?genre=mlb">yahoo　MLB</option>
     </select>
+    <br>
+    find_all引数　未指定なら”a”固定
+    <input type="text" id="text2" size="10" value="" />
 
 
     <p id="inbox"></p>
@@ -33,11 +36,18 @@ $(function(){
         if(str1==""){
             str1 = document.getElementById("area").value;
         }
+
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "a";
+        }
+
+
         $.ajax({
 
             url:'./cgi-bin/sample.py',
             type:'POST',
-            data:{sent:str1}
+            data:{sent:str1,sent2:str2}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
