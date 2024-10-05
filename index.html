@@ -28,10 +28,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
 
 <script>
-
-$(function(){
-
-    $("button").click(function(){
+    function func_a(){
         let str1 = document.getElementById("text1").value;
         if(str1==""){
             str1 = document.getElementById("area").value;
@@ -58,6 +55,18 @@ $(function(){
             var smp=document.getElementById("inbox");
             smp.innerHTML = "failed";
         });
+
+
+    }
+
+    $('select').change(function() {
+        func_a();
+    });
+
+    $(function(){
+        
+    $("button").click(function(){
+        func_a();
     });
 });
 
